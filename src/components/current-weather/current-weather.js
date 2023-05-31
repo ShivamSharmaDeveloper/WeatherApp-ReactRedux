@@ -1,6 +1,21 @@
+import { useContext } from "react";
+import weatherContext from "../../context/weather/weatherContext";
 import "./current-weather.css";
 
-const CurrentWeather = (props) => {
+const CurrentWeather = () => {
+  const weather = useContext(weatherContext);
+  const { location, current, forecast } = weather;
+  const { temp_c, feelslike_c, humidity, condition } = current;
+  const { maxtemp_c, mintemp_c } = forecast.forecastday[0].day;
+  const { text, icon } = condition;
+  // Extracting the relative icon path
+  const iconPath = icon.split("//cdn.weatherapi.com/weather/64x64/")[1];
+  // console.log(iconPath);
+  const Tomorrow = forecast.forecastday[1].day;
+  const wdesc = Tomorrow.condition;
+  // Extracting the relative icon path
+  const ticon = wdesc.icon.split("//cdn.weatherapi.com/weather/64x64/")[1];
+  
   return (
     <div className="weather">
       <div className="left">
@@ -8,42 +23,46 @@ const CurrentWeather = (props) => {
           <div>
             {/* <p className="city">{data.city}</p>
           <p className="weather-description">{data.weather[0].description}</p> */}
-            <p className="city">New Delhi</p>
-            <p className="weather-description">Sunny</p>
+            <p className="city">
+              {location.name} ({location.region})
+            </p>
+            <p className="weather-description">{text}</p>
           </div>
           <img
             alt="weather"
             className="weather-icon"
             // src={`icons/${data.weather[0].icon}.png`}
-            src={`icons/01d.png`}
+            src={`/icons/${iconPath}`}
           />
         </div>
         <div className="bottom">
           {/* <p className="temperature">{Math.round(data.main.temp)}°C</p> */}
-          <p className="temperature">35°C</p>
+          <p className="temperature">{Math.round(temp_c)}°C</p>
           <div className="details">
             <span className="parameter-details">Details:</span>
             <div className="parameter-row">
-              <span className="parameter-label">Feels like</span>
+              <span className="parameter-label">Feels Like</span>
               {/* <span className="parameter-value">
               {Math.round(data.main.feels_like)}°C
             </span> */}
-              <span className="parameter-value">32°C</span>
+              <span className="parameter-value">
+                {Math.round(feelslike_c)}°C
+              </span>
             </div>
             <div className="parameter-row">
-              <span className="parameter-label">Wind</span>
+              <span className="parameter-label">MaxTemp</span>
               {/* <span className="parameter-value">{data.wind.speed} m/s</span> */}
-              <span className="parameter-value">3 m/s</span>
+              <span className="parameter-value">{Math.round(maxtemp_c)}°C</span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
               {/* <span className="parameter-value">{data.main.humidity}%</span> */}
-              <span className="parameter-value">50%</span>
+              <span className="parameter-value">{humidity}%</span>
             </div>
             <div className="parameter-row">
-              <span className="parameter-label">Pressure</span>
+              <span className="parameter-label">MinTemp</span>
               {/* <span className="parameter-value">{data.main.pressure} hPa</span> */}
-              <span className="parameter-value">5 hPa</span>
+              <span className="parameter-value">{Math.round(mintemp_c)}°C</span>
             </div>
           </div>
         </div>
@@ -54,41 +73,51 @@ const CurrentWeather = (props) => {
             {/* <p className="city">{data.city}</p>
           <p className="weather-description">{data.weather[0].description}</p> */}
             <p className="city">Tomorrow</p>
-            <p className="weather-description">Rainny</p>
+            <p className="weather-description">{wdesc.text}</p>
           </div>
           <img
             alt="weather"
             className="weather-icon"
             // src={`icons/${data.weather[0].icon}.png`}
-            src={`icons/09d.png`}
+            src={`icons/${ticon}`}
           />
         </div>
         <div className="bottom">
           {/* <p className="temperature">{Math.round(data.main.temp)}°C</p> */}
-          <p className="temperature-right">35°C</p>
+          <p className="temperature-right">
+            {Math.round(Tomorrow.avgtemp_c)}°C
+          </p>
           <div className="details">
             <span className="parameter-details">Details:</span>
             <div className="parameter-row">
-              <span className="parameter-label">Feels like</span>
+              <span className="parameter-label">Wind</span>
               {/* <span className="parameter-value">
               {Math.round(data.main.feels_like)}°C
             </span> */}
-              <span className="parameter-value">32°C</span>
+              <span className="parameter-value">
+                {Math.round(Tomorrow.maxwind_kph)} km/h
+              </span>
             </div>
             <div className="parameter-row">
-              <span className="parameter-label">Wind</span>
+              <span className="parameter-label">MinTemp</span>
               {/* <span className="parameter-value">{data.wind.speed} m/s</span> */}
-              <span className="parameter-value">3 m/s</span>
+              <span className="parameter-value">
+                {Math.round(Tomorrow.mintemp_c)}°C
+              </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
               {/* <span className="parameter-value">{data.main.humidity}%</span> */}
-              <span className="parameter-value">50%</span>
+              <span className="parameter-value">
+                {Math.round(Tomorrow.avghumidity)}%
+              </span>
             </div>
             <div className="parameter-row">
-              <span className="parameter-label">Pressure</span>
+              <span className="parameter-label">MaxTemp</span>
               {/* <span className="parameter-value">{data.main.pressure} hPa</span> */}
-              <span className="parameter-value">5 hPa</span>
+              <span className="parameter-value">
+                {Math.round(Tomorrow.maxtemp_c)}°C
+              </span>
             </div>
           </div>
         </div>
