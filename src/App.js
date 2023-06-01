@@ -1,7 +1,9 @@
 import "./App.css";
+import logo from "./weather.png";
 import CurrentWeather from "./components/current-weather/current-weather";
 import Hourly from "./components/hourly/hourly";
 import Search from "./components/search/search";
+import Forcast from "./components/forcast/forcast";
 import WeatherState from "./context/weather/WeatherState";
 
 function App() {
@@ -9,10 +11,13 @@ function App() {
     <>
       <WeatherState>
         <div className="container">
+          <img className="logo" src={logo} alt="weather" />
           <h1>WeatherApp</h1>
           <Search />
           <CurrentWeather />
           <Hourly />
+          <hr />
+          <Forcast />
         </div>
       </WeatherState>
     </>
