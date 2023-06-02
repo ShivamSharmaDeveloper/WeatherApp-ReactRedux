@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "../../styles/search.css";
 
-const Search = () => {
+const Search = (props) => {
   const [search, setSearch] = useState("");
 
   const handleOnChange = (e) => {
-    console.log(e.target.value);
     setSearch(e.target.value);
+    // console.log(e.target.value)
+  };
+  
+  const handleSearch = async(e) => {
+    e.preventDefault();
+    // console.log(search)
+    props.onSearch(search)
   };
 
   return (
@@ -21,7 +27,9 @@ const Search = () => {
             value={search}
             onChange={handleOnChange}
           />
-          <button className="btn btn-primary">Search</button>
+          <button className="btn btn-primary" onClick={handleSearch}>
+            Search
+          </button>
         </div>
       </div>
     </div>

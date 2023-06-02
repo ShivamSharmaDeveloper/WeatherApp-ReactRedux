@@ -4,6 +4,7 @@ import "../../styles/current-weather.css";
 
 const CurrentWeather = () => {
   const weather = useContext(weatherContext);
+  // console.log(weather)
   const { location, current, forecast } = weather;
   const { temp_c, feelslike_c, humidity, condition } = current;
   const { maxtemp_c, mintemp_c } = forecast.forecastday[0].day;
@@ -21,8 +22,6 @@ const CurrentWeather = () => {
       <div className="left">
         <div className="top">
           <div>
-            {/* <p className="city">{data.city}</p>
-          <p className="weather-description">{data.weather[0].description}</p> */}
             <p className="city">
               {location.name} ({location.region})
             </p>
@@ -31,37 +30,29 @@ const CurrentWeather = () => {
           <img
             alt="weather"
             className="weather-icon"
-            // src={`icons/${data.weather[0].icon}.png`}
             src={`/icons/${iconPath}`}
           />
         </div>
         <div className="bottom">
-          {/* <p className="temperature">{Math.round(data.main.temp)}°C</p> */}
           <p className="temperature">{Math.round(temp_c)}°C</p>
           <div className="details">
             <span className="parameter-details">Details:</span>
             <div className="parameter-row">
               <span className="parameter-label">Feels Like</span>
-              {/* <span className="parameter-value">
-              {Math.round(data.main.feels_like)}°C
-            </span> */}
               <span className="parameter-value">
                 {Math.round(feelslike_c)}°C
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">MaxTemp</span>
-              {/* <span className="parameter-value">{data.wind.speed} m/s</span> */}
               <span className="parameter-value">{Math.round(maxtemp_c)}°C</span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
-              {/* <span className="parameter-value">{data.main.humidity}%</span> */}
               <span className="parameter-value">{humidity}%</span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">MinTemp</span>
-              {/* <span className="parameter-value">{data.main.pressure} hPa</span> */}
               <span className="parameter-value">{Math.round(mintemp_c)}°C</span>
             </div>
           </div>
@@ -70,20 +61,16 @@ const CurrentWeather = () => {
       <div className="right">
         <div className="top">
           <div>
-            {/* <p className="city">{data.city}</p>
-          <p className="weather-description">{data.weather[0].description}</p> */}
             <p className="city">Tomorrow</p>
             <p className="weather-description">{wdesc.text}</p>
           </div>
           <img
             alt="weather"
             className="weather-icon"
-            // src={`icons/${data.weather[0].icon}.png`}
             src={`icons/${ticon}`}
           />
         </div>
         <div className="bottom">
-          {/* <p className="temperature">{Math.round(data.main.temp)}°C</p> */}
           <p className="temperature-right">
             {Math.round(Tomorrow.avgtemp_c)}°C
           </p>
@@ -91,30 +78,24 @@ const CurrentWeather = () => {
             <span className="parameter-details">Details:</span>
             <div className="parameter-row">
               <span className="parameter-label">Wind</span>
-              {/* <span className="parameter-value">
-              {Math.round(data.main.feels_like)}°C
-            </span> */}
               <span className="parameter-value">
                 {Math.round(Tomorrow.maxwind_kph)} km/h
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">MinTemp</span>
-              {/* <span className="parameter-value">{data.wind.speed} m/s</span> */}
               <span className="parameter-value">
                 {Math.round(Tomorrow.mintemp_c)}°C
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">Humidity</span>
-              {/* <span className="parameter-value">{data.main.humidity}%</span> */}
               <span className="parameter-value">
                 {Math.round(Tomorrow.avghumidity)}%
               </span>
             </div>
             <div className="parameter-row">
               <span className="parameter-label">MaxTemp</span>
-              {/* <span className="parameter-value">{data.main.pressure} hPa</span> */}
               <span className="parameter-value">
                 {Math.round(Tomorrow.maxtemp_c)}°C
               </span>
