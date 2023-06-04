@@ -2,23 +2,24 @@
   text-align: center;
 }
 .container {
-  max-width: 1080px;
+  max-width: 1050px;
   margin: 20px auto;
 }
 
 .logo {
-  display: inline-block;
-  padding: 5px;
-  height: 50px;
-  margin-left: 35%;
-  margin-bottom: 15px;
+  display: flex;
+  padding: 0px 5px 0px 0px;
+  height: 40px;
+  position: absolute;
+  margin-left: 26%;
 }
 
 h1 {
-  display: inline-block;
+  display: flex;
+  margin-left: 42%;
 }
 
-hr{
+hr {
   height: 3px;
   margin-top: 30px;
 }

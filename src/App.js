@@ -16,8 +16,8 @@ function App() {
   };
   return (
     <>
-      <WeatherState location={location}>
-        <div className="container">
+      <div className="container">
+        <WeatherState location={location}>
           <img className="logo" src={logo} alt="weather" />
           <h1>WeatherApp</h1>
           <Search onSearch={handleSearch} />
@@ -25,8 +25,8 @@ function App() {
           <Hourly />
           <hr />
           <Forcast />
-        </div>
-      </WeatherState>
+        </WeatherState>
+      </div>
     </>
   );
 }
