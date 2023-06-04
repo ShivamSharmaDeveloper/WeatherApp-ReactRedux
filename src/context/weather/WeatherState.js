@@ -28,7 +28,7 @@ const WeatherState = ({ location, children }) => {
 
   // Render a loading state or fallback UI if weatherData is null
   if (weatherData === null) {
-    return <div>Loading...</div>;
+    return <div className="Loading">Loading...</div>;
   }
   
   // console.log(location);
