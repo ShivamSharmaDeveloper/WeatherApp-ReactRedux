@@ -5,7 +5,7 @@ import weatherContext from "../../context/weather/weatherContext";
 const Hourly = () => {
   const { weatherData } = useContext(weatherContext);
   const { current } = weatherData;
-  console.log(current)
+  // console.log(current)
   const { hour, date } = current;
   const containerRef = useRef(null);
 
