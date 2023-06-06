@@ -4,24 +4,13 @@ import "../../styles/current-weather.css";
 
 const CurrentWeather = () => {
   const { weatherData } = useContext(weatherContext);
-  // if (!weatherData) {
-  //   return <div>Loading...</div>;
-  // }
-  // console.log(weatherData);
   const { location, current, forecast } = weatherData;
-   if (!current) {
-     return <div>No weather data available</div>;
-   }
-  const { temp_c, feelslike_c, humidity, condition } = current;
-  const { maxtemp_c, mintemp_c } = forecast.forecastday[0].day;
-  const { text, icon } = condition;
-  // Extracting the relative icon path
+  const { temp_c, feelslike_c, humidity, text, icon } = current;
+  const { maxtemp_c, mintemp_c } = forecast[0];
   const iconPath = icon.split("//cdn.weatherapi.com/weather/64x64/")[1];
-  // console.log(iconPath);
-  const Tomorrow = forecast.forecastday[1].day;
-  const wdesc = Tomorrow.condition;
-  // Extracting the relative icon path
-  const ticon = wdesc.icon.split("//cdn.weatherapi.com/weather/64x64/")[1];
+  const Tomorrow = forecast[1];
+  const {text: wdesc, icon: twicon} = Tomorrow
+  const ticon = twicon.split("//cdn.weatherapi.com/weather/64x64/")[1];
 
   return (
     <div className="weather">
@@ -74,14 +63,14 @@ const CurrentWeather = () => {
         </div>
         <div className="bottom">
           <p className="temperature-right">
-            {Math.round(Tomorrow.avgtemp_c)}°C
+            {Math.round(Tomorrow.temp_c)}°C
           </p>
           <div className="details">
             <span className="parameter-details">Details:</span>
             <div className="parameter-row">
               <span className="parameter-label">Wind</span>
               <span className="parameter-value">
-                {Math.round(Tomorrow.maxwind_kph)} km/h
+                {Math.round(Tomorrow.wind)} km/h
               </span>
             </div>
             <div className="parameter-row">
