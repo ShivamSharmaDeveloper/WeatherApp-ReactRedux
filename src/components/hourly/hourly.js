@@ -4,8 +4,9 @@ import weatherContext from "../../context/weather/weatherContext";
 
 const Hourly = () => {
   const { weatherData } = useContext(weatherContext);
-  const { forecast } = weatherData;
-  const { hour, date } = forecast.forecastday[0];
+  const { current } = weatherData;
+  console.log(current)
+  const { hour, date } = current;
   const containerRef = useRef(null);
 
   const handleClick = (e) => {
