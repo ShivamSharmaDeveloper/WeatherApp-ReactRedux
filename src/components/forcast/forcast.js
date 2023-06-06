@@ -6,7 +6,7 @@ import moment from "moment";
 const Forecast = () => {
   const { weatherData } = useContext(weatherContext);
   const { forecast } = weatherData;
-  console.log(forecast)
+  // console.log(forecast)
   // const { forecastday } = forecast;
 
   return (
