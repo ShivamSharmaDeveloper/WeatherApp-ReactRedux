@@ -6,7 +6,8 @@ import moment from "moment";
 const Forecast = () => {
   const { weatherData } = useContext(weatherContext);
   const { forecast } = weatherData;
-  const { forecastday } = forecast;
+  console.log(forecast)
+  // const { forecastday } = forecast;
 
   return (
     <div className="forecast">
@@ -20,14 +21,14 @@ const Forecast = () => {
           </tr>
         </thead>
         <tbody>
-          {forecastday.map((day) => {
+          {forecast.map((day) => {
             const formattedDate = moment(day.date).format("DD-MM-YYYY");
             return (
               <tr key={day.date}>
                 <td>{formattedDate}</td>
-                <td>{Math.round(day.day.mintemp_c)}°C</td>
-                <td>{Math.round(day.day.maxtemp_c)}°C</td>
-                <td>{day.day.avghumidity}%</td>
+                <td>{Math.round(day.mintemp_c)}°C</td>
+                <td>{Math.round(day.maxtemp_c)}°C</td>
+                <td>{day.humidity}%</td>
               </tr>
             );
           })}
