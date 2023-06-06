@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/search.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import weatherContext from "../../context/weather/weatherContext";
 
-const Search = (props) => {
+const Search = () => {
   const [search, setSearch] = useState("");
+  const { setLocation } = useContext(weatherContext);
 
   const handleOnChange = (e) => {
     setSearch(e.target.value);
@@ -12,12 +14,13 @@ const Search = (props) => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    // console.log(search)
-    props.onSearch(search);
+    // setWeatherData(null); // Reset the weatherData when a new location is searched
+    setLocation(search);
+    setSearch("");
   };
 
   return (
-    <div className="search-container">
+    <div>
       <div className="search">
         <i className="fa fa-search"></i>
         <input

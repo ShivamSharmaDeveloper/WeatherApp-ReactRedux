@@ -4,7 +4,7 @@ import weatherContext from "../../context/weather/weatherContext";
 import moment from "moment";
 
 const Forecast = () => {
-  const weatherData = useContext(weatherContext);
+  const { weatherData } = useContext(weatherContext);
   const { forecast } = weatherData;
   const { forecastday } = forecast;
 

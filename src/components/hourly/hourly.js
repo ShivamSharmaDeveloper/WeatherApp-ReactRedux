@@ -3,8 +3,8 @@ import "../../styles/hourly.css";
 import weatherContext from "../../context/weather/weatherContext";
 
 const Hourly = () => {
-  const hourly = useContext(weatherContext);
-  const { forecast } = hourly;
+  const { weatherData } = useContext(weatherContext);
+  const { forecast } = weatherData;
   const { hour, date } = forecast.forecastday[0];
   const containerRef = useRef(null);
 

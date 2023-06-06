@@ -11,7 +11,7 @@
     border: 2px solid #d6d4d4;
     border-radius: 20rem;
     width: 95%;
-    margin-left: 15px;
+    margin: 0 15px;
     padding: 16px;
 }
 
@@ -27,6 +27,9 @@
 }
 
 .search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 8px;
     right: 10px;

@@ -3,9 +3,15 @@ import weatherContext from "../../context/weather/weatherContext";
 import "../../styles/current-weather.css";
 
 const CurrentWeather = () => {
-  const weather = useContext(weatherContext);
-  // console.log(weather)
-  const { location, current, forecast } = weather;
+  const { weatherData } = useContext(weatherContext);
+  // if (!weatherData) {
+  //   return <div>Loading...</div>;
+  // }
+  // console.log(weatherData);
+  const { location, current, forecast } = weatherData;
+   if (!current) {
+     return <div>No weather data available</div>;
+   }
   const { temp_c, feelslike_c, humidity, condition } = current;
   const { maxtemp_c, mintemp_c } = forecast.forecastday[0].day;
   const { text, icon } = condition;
@@ -16,7 +22,7 @@ const CurrentWeather = () => {
   const wdesc = Tomorrow.condition;
   // Extracting the relative icon path
   const ticon = wdesc.icon.split("//cdn.weatherapi.com/weather/64x64/")[1];
-  
+
   return (
     <div className="weather">
       <div className="left">
@@ -64,11 +70,7 @@ const CurrentWeather = () => {
             <p className="city">Tomorrow</p>
             <p className="weather-description">{wdesc.text}</p>
           </div>
-          <img
-            alt="weather"
-            className="weather-icon"
-            src={`icons/${ticon}`}
-          />
+          <img alt="weather" className="weather-icon" src={`icons/${ticon}`} />
         </div>
         <div className="bottom">
           <p className="temperature-right">
