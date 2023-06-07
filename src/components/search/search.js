@@ -5,7 +5,7 @@ import weatherContext from "../../context/weather/weatherContext";
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  const { setLocation } = useContext(weatherContext);
+  const {weatherData, setWeatherData } = useContext(weatherContext);
 
   const handleOnChange = (e) => {
     setSearch(e.target.value);
@@ -15,7 +15,7 @@ const Search = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     // setWeatherData(null); // Reset the weatherData when a new location is searched
-    setLocation(search);
+    setWeatherData({...weatherData, location: {name: search}});
     setSearch("");
   };
 
