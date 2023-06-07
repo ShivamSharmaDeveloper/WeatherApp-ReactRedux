@@ -8,21 +8,21 @@ import WeatherState from "./context/weather/WeatherState";
 
 function App() {
   return (
-    <>
+    // <>
+    <WeatherState>
       <div className="container">
         <div className="logosection">
           <img className="logo" src={logo} alt="weather" />
           <h1>WeatherApp</h1>
         </div>
-        <WeatherState>
-          <Search />
-          <CurrentWeather />
-          <Hourly />
-          <hr />
-          <Forcast />
-        </WeatherState>
+        <Search />
+        <CurrentWeather />
+        <Hourly />
+        <hr />
+        <Forcast />
       </div>
-    </>
+    </WeatherState>
+    // </>
   );
 }
 
