@@ -47,29 +47,20 @@
   pointer-events: none;
 }
 
-
 .hourly-forcast {
-  /* display: inline-block; */
   width: 10%;
   border-radius: 6px;
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
   color: #fff;
   background-color: #333;
   margin: 20px 0 0 0;
-  /* margin-left: 14px; */
   padding: 10px 20px 10px 20px;
-  /* justify-content: space-around; */
   margin: 0px 16px;
   scroll-behavior: smooth;
 }
 
 .Hourly__title {
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
   font-size: 0.9rem;
-  /* text-align: center; */
-  /* margin-right: 17px; */
 }
 
 .Hourly__weather-icon {
