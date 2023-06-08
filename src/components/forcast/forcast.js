@@ -26,8 +26,8 @@ const Forecast = () => {
             return (
               <tr key={day.date}>
                 <td>{formattedDate}</td>
-                <td>{Math.round(day.mintemp_c)}°C</td>
-                <td>{Math.round(day.maxtemp_c)}°C</td>
+                <td className="maxtemp">{Math.round(day.mintemp_c)}°C</td>
+                <td className="mintemp">{Math.round(day.maxtemp_c)}°C</td>
                 <td>{day.humidity}%</td>
               </tr>
             );
