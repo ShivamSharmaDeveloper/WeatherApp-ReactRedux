@@ -90,10 +90,12 @@ const Hourly = () => {
                 <span className="temperature__max">
                   {Math.round(temp_c)}
                   <sup className="temperature__symbol">°</sup>
+                  C
                 </span>
                 <span className="temperature__min">
                   {Math.round(temp_f)}
                   <sup className="temperature__symbol">°</sup>
+                  F
                 </span>
               </div>
             </div>
